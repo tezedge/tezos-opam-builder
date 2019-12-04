@@ -4,7 +4,7 @@ FROM debian:buster
 RUN groupadd -g 999 appuser && \
     useradd -m -r -u 999 -g appuser appuser && \
     apt-get update && \
-    apt-get install -y rsync git m4 build-essential patch unzip bubblewrap wget pkg-config libgmp-dev libev-dev libhidapi-dev opam curl jq
+    apt-get install -y rsync git m4 build-essential patch unzip bubblewrap wget pkg-config libgmp-dev libev-dev libhidapi-dev opam curl jq gawk
 # Install required packages
 RUN apt-get update && \
     apt-get -y install gnupg wget && \

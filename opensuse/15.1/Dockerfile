@@ -7,7 +7,7 @@ RUN groupadd -g 999 appuser && \
     zypper refresh && \
     zypper install -y --type pattern devel_basis && \
     zypper install -y rsync unzip wget gmp-devel libev-devel libevdev2 libhidapi-devel curl jq libsodium-devel \
-                   clang clang-devel llvm llvm-devel kernel-devel bzip2 gzip git m4 which && \
+                      clang clang-devel llvm llvm-devel kernel-devel bzip2 gzip git m4 which gawk && \
     wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${OPAM_VERSION}-x86_64-linux && \
     cp opam-${OPAM_VERSION}-x86_64-linux /usr/local/bin/opam && \
     chmod a+x /usr/local/bin/opam

@@ -8,7 +8,7 @@ RUN groupadd -g 777 appuser && \
     yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     yum -y groupinstall "Development Tools" && \
     yum -y install wget gmp-devel libev-devel libevdev hidapi-devel jq libsodium-devel \
-                   clang clang-devel llvm llvm-devel kernel-devel which && \
+                   clang clang-devel llvm llvm-devel kernel-devel which gawk && \
     wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${OPAM_VERSION}-x86_64-linux && \
     cp opam-${OPAM_VERSION}-x86_64-linux /usr/local/bin/opam && \
     chmod a+x /usr/local/bin/opam

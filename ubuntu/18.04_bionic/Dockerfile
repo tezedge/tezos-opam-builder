@@ -7,7 +7,7 @@ RUN groupadd -g 999 appuser && \
     apt update && \
     apt install -y rsync git m4 build-essential patch unzip wget pkg-config \
                    libgmp-dev libev-dev libhidapi-dev curl jq libsodium-dev \
-                   clang libclang-dev llvm llvm-dev linux-kernel-headers && \
+                   clang libclang-dev llvm llvm-dev linux-kernel-headers gawk && \
     wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${OPAM_VERSION}-x86_64-linux && \
     cp opam-${OPAM_VERSION}-x86_64-linux /usr/local/bin/opam && \
     chmod a+x /usr/local/bin/opam

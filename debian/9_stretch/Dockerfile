@@ -5,7 +5,7 @@ ARG OPAM_VERSION="2.0.5"
 RUN groupadd -g 999 appuser && \
     useradd -m -r -u 999 -g appuser appuser && \
     apt-get update && \
-    apt-get install -y rsync git m4 build-essential patch unzip bubblewrap wget pkg-config libgmp-dev libev-dev libhidapi-dev curl jq gnupg
+    apt-get install -y rsync git m4 build-essential patch unzip bubblewrap wget pkg-config libgmp-dev libev-dev libhidapi-dev curl jq gnupg gawk
 # Install opam and llvm
 RUN wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${OPAM_VERSION}-x86_64-linux && \
     cp opam-${OPAM_VERSION}-x86_64-linux /usr/local/bin/opam && \
