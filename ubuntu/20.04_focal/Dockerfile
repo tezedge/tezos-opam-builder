@@ -1,5 +1,5 @@
 FROM ubuntu:focal
-ARG OCAML_VERSION="4.07.1"
+ARG OCAML_VERSION="4.09.1"
 ARG OPAM_VERSION="2.0.5"
 
 # noninteractive set TZ

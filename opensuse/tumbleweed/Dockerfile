@@ -1,5 +1,5 @@
 FROM opensuse/tumbleweed:latest
-ARG OCAML_VERSION="4.07.1"
+ARG OCAML_VERSION="4.09.1"
 ARG OPAM_VERSION="2.0.5"
 # Create build user & install required packages
 RUN zypper refresh && \
@@ -8,7 +8,8 @@ RUN zypper refresh && \
     useradd -m -r -u 999 -g appuser appuser && \
     zypper install -y --type pattern devel_basis && \
     zypper install -y rsync unzip wget gmp-devel libev-devel libevdev2 libhidapi-devel curl jq libsodium-devel \
-                      clang clang-devel llvm llvm-devel kernel-devel bzip2 gzip git m4 which gawk && \
+                      clang clang-devel llvm llvm-devel kernel-devel bzip2 gzip git m4 which gawk \
+                      diff && \
     wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${OPAM_VERSION}-x86_64-linux && \
     cp opam-${OPAM_VERSION}-x86_64-linux /usr/local/bin/opam && \
     chmod a+x /usr/local/bin/opam

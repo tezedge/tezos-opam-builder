@@ -19,7 +19,7 @@ RUN apt-get update && \
                        clang-8 libclang-8-dev
 # Install ocaml compiler and dune
 USER appuser
-ARG OCAML_VERSION="4.07.1"
+ARG OCAML_VERSION="4.09.1"
 ENV OPAMNO 1
 RUN opam init --bare --disable-sandboxing --solver=mccs && \
     opam switch create --solver=mccs ${OCAML_VERSION} && \

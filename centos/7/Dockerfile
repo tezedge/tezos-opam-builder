@@ -1,5 +1,5 @@
 FROM centos:7
-ARG OCAML_VERSION="4.07.1"
+ARG OCAML_VERSION="4.09.1"
 ARG OPAM_VERSION="2.0.5"
 # Create build user & install required packages
 RUN groupadd -g 777 appuser && \
