@@ -3,9 +3,26 @@ ARG OCAML_VERSION="4.09.1"
 ARG OPAM_VERSION="2.0.5"
 # Create build user & install required packages
 RUN groupadd -g 999 appuser && \
-    useradd -m -r -u 999 -g appuser appuser && \
-    apt update && \
-    apt install -y rsync git m4 build-essential patch unzip wget pkg-config \
+    useradd -m -r -u 999 -g appuser appuser
+
+# fix https://www.unixtutorial.org/fix-apt-update-ubuntu-19-04/
+RUN cat /etc/apt/sources.list
+RUN sed -i '/disco main/d' /etc/apt/sources.list && \
+    sed -i '/disco universe/d' /etc/apt/sources.list && \
+    sed -i '/disco multiverse/d' /etc/apt/sources.list && \
+    sed -i '/disco-updates/d' /etc/apt/sources.list && \
+    sed -i '/disco-security/d' /etc/apt/sources.list && \
+    sed -i '/disco-backports/d' /etc/apt/sources.list
+RUN cat /etc/apt/sources.list
+RUN echo "deb http://old-releases.ubuntu.com/ubuntu disco main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://old-releases.ubuntu.com/ubuntu disco-updates main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://old-releases.ubuntu.com/ubuntu disco-security main restricted universe multiverse" >> /etc/apt/sources.list
+RUN echo "deb http://old-releases.ubuntu.com/ubuntu disco-backports main restricted universe multiverse" >> /etc/apt/sources.list
+RUN cat /etc/apt/sources.list
+
+RUN apt install -y apt-transport-https
+RUN apt update
+RUN apt install -y rsync git m4 build-essential patch unzip wget pkg-config \
                    libgmp-dev libev-dev libhidapi-dev curl jq libsodium-dev \
                    clang libclang-dev llvm llvm-dev linux-kernel-headers gawk && \
     wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${OPAM_VERSION}-x86_64-linux && \

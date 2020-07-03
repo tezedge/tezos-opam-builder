@@ -13,7 +13,8 @@ RUN wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${
     wget https://apt.llvm.org/llvm-snapshot.gpg.key && apt-key add llvm-snapshot.gpg.key && rm llvm-snapshot.gpg.key && \
     apt-get -y install software-properties-common && \
     add-apt-repository 'deb http://apt.llvm.org/stretch/ llvm-toolchain-stretch-8 main' && \
-    apt-get update && \
+    apt-get -y install apt-transport-https && \
+    apt-get update  && \
     apt-get install -y mccs rsync git m4 build-essential patch unzip bubblewrap pkg-config \
                        libgmp-dev libev-dev libhidapi-dev libffi6 libffi-dev liblmdb-dev curl jq opam \
                        libsodium18 libsodium-dev \
