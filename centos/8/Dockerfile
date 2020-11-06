@@ -8,7 +8,8 @@ RUN groupadd -g 777 appuser && \
     yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
     yum -y groupinstall "Development Tools" && \
     yum -y install rsync wget gmp-devel libev-devel libevdev jq libsodium-devel \
-                   clang clang-devel llvm llvm-devel kernel-devel which gawk && \
+                   clang clang-devel llvm llvm-devel kernel-devel which gawk \
+                   libffi-devel && \
     rpm -ivh http://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/h/hidapi-0.7.0-2.a88c724.el7.x86_64.rpm && \
     rpm -ivh http://download-ib01.fedoraproject.org/pub/epel/7/x86_64/Packages/h/hidapi-devel-0.7.0-2.a88c724.el7.x86_64.rpm && \
     wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${OPAM_VERSION}-x86_64-linux && \
