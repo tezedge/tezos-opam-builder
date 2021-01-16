@@ -34,3 +34,11 @@ ENV CAML_LD_LIBRARY_PATH="/home/appuser/.opam/${OCAML_VERSION}/lib/stublibs:/hom
 ENV OCAML_TOPLEVEL_PATH="/home/appuser/.opam/${OCAML_VERSION}/lib/toplevel"
 ENV MANPATH=":/home/appuser/.opam/${OCAML_VERSION}/man"
 ENV PATH="/home/appuser/.opam/${OCAML_VERSION}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+ARG RUSTUP_TOOLCHAIN_VERSION="1.44.0"
+
+# Install rustup
+RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain ${RUSTUP_TOOLCHAIN_VERSION} -y
+ENV PATH="/home/appuser/.cargo/bin:$PATH"
+RUN rustc --version && \
+    cargo --version

@@ -1,6 +1,8 @@
 FROM ubuntu:disco
 ARG OCAML_VERSION="4.09.1"
 ARG OPAM_VERSION="2.0.5"
+ARG RUSTUP_TOOLCHAIN_VERSION="1.44.0"
+
 # Create build user & install required packages
 RUN groupadd -g 999 appuser && \
     useradd -m -r -u 999 -g appuser appuser
@@ -45,3 +47,9 @@ ENV CAML_LD_LIBRARY_PATH="/home/appuser/.opam/${OCAML_VERSION}/lib/stublibs:/hom
 ENV OCAML_TOPLEVEL_PATH="/home/appuser/.opam/${OCAML_VERSION}/lib/toplevel"
 ENV MANPATH=":/home/appuser/.opam/${OCAML_VERSION}/man"
 ENV PATH="/home/appuser/.opam/${OCAML_VERSION}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Install rustup
+RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain ${RUSTUP_TOOLCHAIN_VERSION} -y
+ENV PATH="/home/appuser/.cargo/bin:$PATH"
+RUN rustc --version && \
+    cargo --version
