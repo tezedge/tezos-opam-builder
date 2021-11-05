@@ -21,7 +21,7 @@ RUN wget https://github.com/ocaml/opam/releases/download/${OPAM_VERSION}/opam-${
                        libgmp-dev libev-dev libhidapi-dev libffi6 libffi-dev liblmdb-dev curl jq opam \
                        libsodium18 libsodium-dev \
                        libllvm-8-ocaml-dev libllvm8 llvm-8 llvm-8-dev \
-                       clang-8 libclang-8-dev autoconf
+                       clang-8 libclang-8-dev autoconf zlib1g-dev
 # Install ocaml compiler and dune
 USER appuser
 
