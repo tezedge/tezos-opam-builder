@@ -1,7 +1,7 @@
 FROM centos:8
-ARG OCAML_VERSION="4.10.2"
+ARG OCAML_VERSION="4.12.0"
 ARG OPAM_VERSION="2.0.5"
-ARG RUSTUP_TOOLCHAIN_VERSION="1.44.0"
+ARG RUSTUP_TOOLCHAIN_VERSION="1.52.1"
 
 # Create build user & install required packages
 RUN groupadd -g 777 appuser && \
