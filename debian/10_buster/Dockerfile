@@ -19,7 +19,7 @@ RUN apt-get update && \
                        clang-8 libclang-8-dev autoconf zlib1g-dev
 # Install ocaml compiler and dune
 USER appuser
-ARG OCAML_VERSION="4.10.2"
+ARG OCAML_VERSION="4.12.0"
 ENV OPAMNO 1
 RUN opam init --bare --disable-sandboxing --solver=mccs && \
     opam switch create --solver=mccs ${OCAML_VERSION} && \
@@ -35,7 +35,7 @@ ENV OCAML_TOPLEVEL_PATH="/home/appuser/.opam/${OCAML_VERSION}/lib/toplevel"
 ENV MANPATH=":/home/appuser/.opam/${OCAML_VERSION}/man"
 ENV PATH="/home/appuser/.opam/${OCAML_VERSION}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-ARG RUSTUP_TOOLCHAIN_VERSION="1.44.0"
+ARG RUSTUP_TOOLCHAIN_VERSION="1.52.1"
 
 # Install rustup
 RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain ${RUSTUP_TOOLCHAIN_VERSION} -y
